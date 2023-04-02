@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_account"
+    tools:ignore="ExtraText">
+
+    <fragment
+        android:id="@+id/nav_account"
+        android:name="com.example.virginmoney.ui.account.AccountFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/nav_people"
+        android:name="com.example.virginmoney.ui.people.PeopleFragment"
+        android:label="@string/menu_people"
+        tools:layout="@layout/fragment_people" >
+        <action
+            android:id="@+id/action_nav_people_to_peopleDetailFragment"
+            app:destination="@id/peopleDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_rooms"
+        android:name="com.example.virginmoney.ui.rooms.RoomsFragment"
+        android:label="@string/menu_rooms"
+        tools:layout="@layout/fragment_rooms" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/peopleDetailFragment"
+        android:name="com.example.virginmoney.ui.people.PeopleDetailFragment"
+        android:label="Staff Detals"
+        tools:layout="@layout/fragment_people_detail" />
+
+</navigation>
