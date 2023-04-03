@@ -9,9 +9,10 @@ import com.example.virginmoney.R
 import com.example.virginmoney.data.model.people.PeopleItemModel
 import com.example.virginmoney.databinding.ItemPeopleBinding
 
-class PeopleAdapter(val people:ArrayList<PeopleItemModel>):RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
+class PeopleAdapter(var people:ArrayList<PeopleItemModel>):RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
     var onItemClick:  ((PeopleItemModel) -> Unit)? = null
+
 
     class ViewHolder(val view:View):RecyclerView.ViewHolder(view){
 
@@ -47,6 +48,10 @@ class PeopleAdapter(val people:ArrayList<PeopleItemModel>):RecyclerView.Adapter<
         val view=LayoutInflater.from(parent.context).inflate(R.layout.item_people, parent, false)
         return ViewHolder(view)
     }
+    fun filterList(filterlist:ArrayList<PeopleItemModel>){
+        people=filterlist
+        notifyDataSetChanged()
+    }
 
 
 
@@ -57,6 +62,7 @@ class PeopleAdapter(val people:ArrayList<PeopleItemModel>):RecyclerView.Adapter<
         holder.itemView.setOnClickListener{
             people?.get(position)?.let{
                 onItemClick?.invoke(it)
+
             }
         }
 

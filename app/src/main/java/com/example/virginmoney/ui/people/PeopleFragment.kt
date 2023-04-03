@@ -2,6 +2,8 @@ package com.example.virginmoney.ui.people
 
 import android.os.Bundle
 import android.view.*
+import android.widget.EditText
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.MenuProvider
@@ -22,6 +24,7 @@ class PeopleFragment : Fragment(){
     private var _binding: FragmentPeopleBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<PeopleViewModel>()
+    lateinit var searchView: SearchView
 
 
     override fun onCreateView(
@@ -30,6 +33,29 @@ class PeopleFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPeopleBinding.inflate(inflater, container, false)
+        /*searchView = requireView().findViewById(R.id.searchview)
+        searchView.clearFocus()
+        searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener,
+                android.widget.SearchView.onQueryTextListener
+        {
+            override fun onQueryTextSubmit(query:String?):Boolean{
+                if(viewModel.people.contains(query)){
+                    peopleAdapter.filter.filter(query)
+                }
+                else{
+                    Toast.makeText(this,"No persons found",Toast.LENGTH_LONG).show()
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?):Boolean{
+                peopleAdapter.filter.filter(newText)
+
+                return false
+
+            }
+
+        }*/
 
         viewModel.people.observe(viewLifecycleOwner){
             it?.let{
